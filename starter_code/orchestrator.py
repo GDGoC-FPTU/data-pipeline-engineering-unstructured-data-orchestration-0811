@@ -30,7 +30,7 @@ def run_pipeline():
             if run_semantic_checks(processed):
                 # Pydantic validation
                 doc = UnifiedDocument(**processed)
-                final_kb.append(doc.dict())
+                final_kb.append(doc.model_dump())
                 print(f"Success: Added {doc.document_id}")
             else:
                 print(f"Rejected: {processed.get('document_id')}")
@@ -49,7 +49,7 @@ def run_pipeline():
             if run_semantic_checks(processed):
                 # Pydantic validation
                 doc = UnifiedDocument(**processed)
-                final_kb.append(doc.dict())
+                final_kb.append(doc.model_dump())
                 print(f"Success: Added {doc.document_id}")
             else:
                 print(f"Rejected: {processed.get('document_id')}")
